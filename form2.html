@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>브랜드 및 색상 선택</title>
+    <style>
+        .color-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 10px;
+        }
+
+        #brand-message {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        #brand-select {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="brand-message">브랜드를 선택하세요</div>
+
+    <div id="brand-select">
+        <select id="brand-dropdown">
+            <option value="">선택...</option>
+            <option value="브랜드 A">브랜드 A</option>
+            <option value="브랜드 B">브랜드 B</option>
+            <option value="브랜드 C">브랜드 C</option>
+        </select>
+    </div>
+
+    <div id="color-selection">
+        <div class="color-icon" style="background-color: #FF69B4;" data-color="colorful"></div>
+        <div class="color-icon" style="background-color: #1E90FF;" data-color="blue roan"></div>
+        <div class="color-icon" style="background-color: #32CD32;" data-color="lime green"></div>
+        <div class="color-icon" style="background-color: #FFD700;" data-color="golden"></div>
+    </div>
+
+    <script>
+        const brandDropdown = document.getElementById('brand-dropdown');
+        const brandMessage = document.getElementById('brand-message');
+        const colorIcons = document.querySelectorAll('.color-icon');
+
+        brandDropdown.addEventListener('change', function() {
+            const selectedBrand = brandDropdown.value;
+
+            if (selectedBrand === "") {
+                brandMessage.textContent = "브랜드를 선택하세요";
+            } else {
+                brandMessage.textContent = `선택된 브랜드: ${selectedBrand}`;
+            }
+        });
+
+        // 색상 아이콘 클릭 시 색상만 선택
+        colorIcons.forEach(icon => {
+            icon.addEventListener('click', function() {
+                alert(`색상이 선택되었습니다: ${icon.style.backgroundColor}`);
+            });
+        });
+    </script>
+
+</body>
+</html>
